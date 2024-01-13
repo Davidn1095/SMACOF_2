@@ -1,0 +1,21 @@
+# Step 1: Multidimensional Scaling on 'kinshipdelta' dataset
+data(kinshipdelta)   # Load the 'kinshipdelta' dataset
+res = smacofSym(kinshipdelta)   # Perform symmetric MDS
+res   # Display the result
+summary(res)   # Provide a summary of the result
+
+# Step 2: Multidimensional Scaling on 'trading' dataset
+data(trading)   # Load the 'trading' dataset
+res = smacofSym(trading, ndim = 3, metric = FALSE, ties = "secondary")   # Perform symmetric MDS with specific parameters
+res   # Display the result
+
+# Step 3: Multidimensional Scaling on 'perception' dataset
+data(perception)   # Load the 'perception' dataset
+res <- smacofIndDiff(perception)   # Perform individual differences MDS
+res   # Display the result
+summary(res)   # Provide a summary of the result
+
+# Step 4: Multidimensional Scaling with Constraints on 'perception' dataset
+res.id <- smacofIndDiff(perception, constraint = "identity")   # MDS with identity constraint
+res.diag <- smacofIndDiff(perception, constraint = "diagonal")   # MDS with diagonal constraint
+res.idio <- smacofIndDiff(perception, constraint = "idioscal")   # MDS with idiosyncratic scaling constraint
